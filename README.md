@@ -82,5 +82,3 @@ also, you can train your generator by running TrainGeneratorGtoImg.py
 - Reconstruct private training data against mainstream defense mechanisms.
 
 <img src="readmeimg2.png" alt="readmeimg2" style="zoom: 25%;" />
-"# RGLA" 
-"# RGLA" 
