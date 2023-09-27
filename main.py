@@ -38,7 +38,7 @@ def parse_args():
     parser.add_argument("--trueyhat", default=False, help="")
     # defence methods
     parser.add_argument("--defence_method", default=None, choices=['noise', 'clipping', 'compression', 'representation', None])
-    parser.add_argument("--d_param", default=0)
+    parser.add_argument("--d_param", default=4)
     # for ggl
     parser.add_argument("--budget", default=500)
     parser.add_argument('--use_weight', action='store_true')
