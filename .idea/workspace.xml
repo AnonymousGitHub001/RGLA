@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c4bc3e5-92a5-4307-b3d6-8e09063a29b5" name="Changes" comment="first commit" />
+    <list default="true" id="4c4bc3e5-92a5-4307-b3d6-8e09063a29b5" name="Changes" comment="first commit">
+      <change afterPath="$PROJECT_DIR$/.idea/GLAD.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -90,6 +94,7 @@
       <workItem from="1684502174006" duration="3244000" />
       <workItem from="1684658091994" duration="17432000" />
       <workItem from="1695695421506" duration="7272000" />
+      <workItem from="1695726310186" duration="1433000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1684672172095</created>
@@ -196,7 +201,21 @@
       <option name="project" value="LOCAL" />
       <updated>1695725079952</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="first commit">
+      <created>1695726385372</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1695726385372</updated>
+    </task>
+    <task id="LOCAL-00017" summary="first commit">
+      <created>1695726515768</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1695726515768</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

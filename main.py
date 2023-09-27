@@ -32,7 +32,7 @@ def parse_args():
     parser.add_argument("--seed", help="random seeds for experiments", default=24, type=int)
     parser.add_argument("--conflict_num", default=[], help="1~batchsize")
     parser.add_argument("--save_rec", default=False)
-    parser.add_argument("--Iteration", default=100001)
+    parser.add_argument("--Iteration", default=20001)
     parser.add_argument("--lr", default=0.001)
     parser.add_argument("--trueloss", default=False, help="")
     parser.add_argument("--trueyhat", default=False, help="")
