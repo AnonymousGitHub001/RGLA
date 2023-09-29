@@ -1,7 +1,7 @@
 # RGLA: Reverse Gradient Leakage Attack in Federated Learning using Inverted Cross-Entropy Loss Function
 ## Abstract
 
-RGLA, a gradient leakage attack (GLA) method, can reconstructe private training data in 30 seconds even under mainstream defense mechanisms (additive noise, gradient clipping,  gradient sparsification). GLAD addresses the challenge of high-pixel data and duplicate labels for GLA, thus push the GLA more realistic.
+RGLA, a gradient leakage attack (GLA) method, can reconstruct 224 $\times$ 224 pixels private training data of batch size 256 in 30 seconds while considering duplicate labels. GLAD addresses the challenge of high-resolution data and duplicate labels for GLA, thus push the GLA more realistic. Extensive experiments demonstrate the robustness of RGLA to high resolution, duplicate labels, batch size, relatively strict defense methods, and initialization methods for the dummy model output.
 
 
 
@@ -13,7 +13,7 @@ The whole attack process can be composed of three phases:
 - Disaggregate the feature map input into the last fully-connected layer from the averaged gradients by the obtained model output.
 - Generate the private training data by inputting the separated feature map into the pre-trained generator which generates the data according to the feature map.
 
-<img src="overview.png" alt="overview" style="zoom: 50%;" />
+<img src="./readme_files/overview.png" alt="overview" style="zoom: 25%;" />
 
 
 
@@ -75,10 +75,23 @@ also, you can train your generator by running TrainGeneratorGtoImg.py
 
 ## Results
 
-- Reconstruct private training data containing duplicate labels in 30 seconds.
+- Comparison with the state-of-the-art methods
 
-​	<img src="readmeimg1.png" alt="readmeimg1" style="zoom: 25%;" />
+​	<img src="./readme_files/compareexample.png" alt="compareexample" style="zoom:25%;" />
+
+- Reconstruct private training data with batch size of 256.
+
+  <img src="./readme_files/256batchsize.png" alt="256batchsize" style="zoom:25%;" />
 
 - Reconstruct private training data against mainstream defense mechanisms.
 
-<img src="readmeimg2.png" alt="readmeimg2" style="zoom: 25%;" />
+<img src="./readme_files/readmeimg2.png" alt="readmeimg2" style="zoom: 25%;" />
+
+- Ablation Study
+
+  <img src="./readme_files/objective combination.png" alt="objective combination" style="zoom: 25%;" />
+
+- Evaluation of the different initialization methods for the dummy model output
+
+  <img src="./readme_files/initial.png" alt="initial" style="zoom:25%;" />
+
