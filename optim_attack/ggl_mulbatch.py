@@ -34,7 +34,7 @@ class NGReconstructor():
                        )
 
     def reconstruct(self, input_gradient, label, use_pbar=True):
-        labels = self.infer_label(input_gradient, num_inputs=len(label))
+        labels = label # self.infer_label(input_gradient, num_inputs=len(label))
         # labels = label.detach().clone()
         print('Inferred label: {}'.format(list(labels)))
 
