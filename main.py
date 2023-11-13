@@ -11,7 +11,7 @@ from defense import gradient_clipping, defense
 from gen_attack import gen_attack_algorithm
 from modellib import chooseAttackedModel, Generator
 from RGLA_algorithm import gen_attack_, generat_img
-from optim_attack import ig_algorithm
+from optim_attack import ig_algorithm, idlg_algorithm
 from optim_attack.dlg import dlg_algorithm
 from optim_attack.ggl_mulbatch import ggl_algorithm
 from utils import setup_seed, show_imgs, BNStatisticsHook, make_reconstructPath, savecurimgs
@@ -100,7 +100,7 @@ if __name__ == "__main__":
         index += 1
         start=time.time()
         if args.algorithm == "dlg":
-            dummy_x = dlg_algorithm(grad, y, resnet50, (args.batch_size, 3, 224, 224), args.max_iteration, args.device, class_num)
+            dummy_x = idlg_algorithm(grad, y, resnet50, (args.batch_size, 3, 224, 224), args.max_iteration, args.device)
         elif args.algorithm == "ig":
             dummy_x = ig_algorithm(grad, x, y, resnet50, (args.batch_size, 3, 224, 224), args.max_iteration,
                                    args.device, record_dir)
