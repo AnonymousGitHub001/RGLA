@@ -7,29 +7,30 @@ import torch
 import argparse
 from torch import nn
 from torch.utils.data import DataLoader
-
-from RGLA_algorithm import gen_attack_
 from defense import gradient_clipping, defense
 from gen_attack import gen_attack_algorithm
+from iLRA import get_true_label
 from modellib import chooseAttackedModel, Generator
-from optim_attack import ig_algorithm, stg_algorithm, idlg_algorithm
+from RGLA_algorithm import gen_attack_, generat_img
+from optim_attack import ig_algorithm, idlg_algorithm
 from optim_attack.dlg import dlg_algorithm
 from optim_attack.ggl_mulbatch import ggl_algorithm
 from utils import setup_seed, show_imgs, BNStatisticsHook, make_reconstructPath, savecurimgs
 from dataset import get_dataloader
 
+
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--model_weights", help="weights path for generator", default="./savedModel/RGLA_generator_224.pth") # ./record/train_generator/exp_0/weights_6.pth, ./savedModel/gen_weights.pth
-    parser.add_argument("--fgla_modelpath", help="", default="./savedModel/gen_weights.pth")
-    parser.add_argument("--reconstruct_num", help="number of reconstructed batches", default=20, type=int)
-    parser.add_argument("--algorithm", default="GLAD", choices=["dlg", "ig", "ggl", "fgla", "GLAD", "stg"])
-    parser.add_argument("--dataset", help="dataset used to reconstruct", default="imagenet", choices=["imagenet", "celeba", "cifar100"])
-    parser.add_argument("--max_iteration", help="iteration to reconstruct", default=20000, type=int)
+    parser.add_argument("--fgla_modelpath", help="", default="./savedModel/FGLA_generator.pth")
+    parser.add_argument("--reconstruct_num", help="number of reconstructed batches", default=1, type=int)
+    parser.add_argument("--algorithm", default="GLAD", choices=["dlg", "ig", "ggl", "fgla", "GLAD"])
+    parser.add_argument("--dataset", help="dataset used to reconstruct", default="cifar100", choices=["imagenet", "celeba", "cifar100"])
+    parser.add_argument("--max_iteration", help="iteration to reconstruct", default=1, type=int)
     parser.add_argument("--reconstructPath", help="experiment name used to create folder", default="./record/reconstruct")
     parser.add_argument("--batch_size", help="batch size for training", default=8, type=int)
     parser.add_argument("--device", help="which device to use", default="cuda:1")
-    parser.add_argument("--seed", help="random seeds for experiments", default=77, type=int)
+    parser.add_argument("--seed", help="random seeds for experiments", default=24, type=int)
     parser.add_argument("--conflict_num", default=[], help="1~batchsize")
     parser.add_argument("--save_rec", default=False)
     parser.add_argument("--Iteration", default=20001)
@@ -38,7 +39,7 @@ def parse_args():
     parser.add_argument("--trueyhat", default=False, help="")
     # defence methods
     parser.add_argument("--defence_method", default=None, choices=['noise', 'clipping', 'compression', 'representation', None])
-    parser.add_argument("--d_param", default=0)
+    parser.add_argument("--d_param", default=4)
     # for ggl
     parser.add_argument("--budget", default=500)
     parser.add_argument('--use_weight', action='store_true')
@@ -63,7 +64,8 @@ def get_grad_dl(model: nn.Module, dataloader: DataLoader, device, defence_method
         attacked_loss = criterion(attacked_y_pred, attack_y)
         attacked_grad = torch.autograd.grad(attacked_loss, model.parameters())
         grad = [g.detach() for g in attacked_grad]
-        grad = defense(defence_method, grad, model, x, y, d_param)
+        if defence_method != None:
+            grad = defense(defence_method, grad, model, x, y, d_param)
 
         pred2 = attacked_y_pred.detach().clone().requires_grad_(True)
         loss2 = criterion(pred2, attack_y)
@@ -109,14 +111,11 @@ if __name__ == "__main__":
             decoder = Generator()
             decoder.load_state_dict(torch.load(args.fgla_modelpath))
             dummy_x = gen_attack_algorithm(grad, y, decoder, True, args.device)
-        elif args.algorithm == "stg":
-            dummy_x = stg_algorithm(grad, y, mean_var_list, resnet50, (args.batch_size, 3, 224, 224),
-                                    args.max_iteration,
-                                    args.device)
         else:
             decoder = Generator()
             decoder.load_state_dict(torch.load(args.model_weights, map_location=args.device))
-            dummy_x, predloss = gen_attack_(grad, y, args.batch_size, resnet50, decoder, args.device, class_num, args.lr, args.Iteration, attacked_y_pred, dl_dy, attacked_loss, args.trueloss, args.trueyhat, args.defence_method, args.d_param)
+            re_label = get_true_label(resnet50.to(args.device), grad, class_num, args.device, y, args.batch_size)
+            dummy_x, predloss = gen_attack_(grad, re_label.to(args.device), args.batch_size, resnet50, decoder, args.device, class_num, args.lr, args.Iteration, attacked_y_pred, dl_dy, attacked_loss, args.trueloss, args.trueyhat, args.defence_method, args.d_param)
         psnr = psnr_lossfn(dummy_x, x)
         ssim = ssim_lossfn(dummy_x, x)
         lpips = lpips_lossfn(dummy_x, x)

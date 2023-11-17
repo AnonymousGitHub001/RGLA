@@ -84,7 +84,7 @@ def perturb_representation(input_gradient, model, ground_truth, pruning_rate=10)
 
     # for ResNet-18
     handle = model.fc.register_forward_hook(get_activation('flatten'))
-    out = model(gt_data)
+    out = model(gt_data.to(device))
 
     feature_graph = activation['flatten']
 
@@ -94,11 +94,11 @@ def perturb_representation(input_gradient, model, ground_truth, pruning_rate=10)
         deviation_target[:, f] = 1
         feature_graph.backward(deviation_target, retain_graph=True)
         deviation_f1_x = gt_data.grad.data
-        deviation_x_norm[:, f] = torch.norm(deviation_f1_x.view(deviation_f1_x.size(0), -1), dim=1) / (
-                    (feature_graph.data[:, f]) + 1e-10)
+        deviation_x_norm[:, f] = torch.norm(deviation_f1_x.view(deviation_f1_x.size(0), -1).to(device), dim=1) / ((feature_graph.data[:, f]) + 1e-10)
         model.zero_grad()
         gt_data.grad.data.zero_()
         deviation_target[:, f] = 0
+        print(f)
 
     # prune r_i corresponding to smallest ||dr_i/dX||/||r_i||
     deviation_x_norm_sum = deviation_x_norm.sum(axis=0)
