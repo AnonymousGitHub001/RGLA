@@ -66,7 +66,7 @@ def Private_data_reconstrution(fcin, generator)
 
 ## Simple Usage
 
-- Download the [trained generator](https://drive.google.com/file/d/1ZXaoF-3abmrjMwhIRLEg5ri05W5dMEQI/view?usp=sharing) and place it in "./savedModel/"
+- Download the [trained generator](https://drive.google.com/file/d/1ZXaoF-3abmrjMwhIRLEg5ri05W5dMEQI/view?usp=sharing) for the images of 224 $\times$ 224 or the [trained generator](https://drive.google.com/file/d/19mmn-DsaQ0Jc0GIheIMKX4ci8Fy1KFkI/view?usp=sharing) for the images of 336 $\times$ 336 and place it in "./savedModel/"
 - run main.py, and you can adjust the argument in main.py
 
 also, you can train your generator by running TrainGeneratorGtoImg.py
@@ -77,7 +77,7 @@ also, you can train your generator by running TrainGeneratorGtoImg.py
 
 - Comparison with the state-of-the-art methods
 
-​	<img src="./readme_files/compareexample.png" alt="compareexample" style="zoom:25%;" />
+  <img src="./readme_files/compareexample.png" alt="compareexample" style="zoom:25%;" />
 
 - Reconstruct private training data with batch size of 256.
 
@@ -85,7 +85,7 @@ also, you can train your generator by running TrainGeneratorGtoImg.py
 
 - Reconstruct private training data against mainstream defense mechanisms.
 
-<img src="./readme_files/readmeimg2.png" alt="readmeimg2" style="zoom: 25%;" />
+  <img src="./readme_files/readmeimg2.png" alt="readmeimg2" style="zoom: 25%;" />
 
 - Ablation Study
 
@@ -94,4 +94,12 @@ also, you can train your generator by running TrainGeneratorGtoImg.py
 - Evaluation of the different initialization methods for the dummy model output
 
   <img src="./readme_files/initial.png" alt="initial" style="zoom:25%;" />
+
+- Reconstruction by inferred label [Ma K, Sun Y, Cui J, et al. Instance-wise Batch Label Restoration via Gradients in Federated Learning[C]//The Eleventh International Conference on Learning Representations. 2022.]
+
+  <img src=".\readme_files\inferredlabels.png" alt="inferredlabels" style="zoom: 25%;" />
+
+- Reconstruct the data batch of 336$\times$336 pixels
+
+  <img src=".\readme_files\pixels336.png" alt="pixels336" style="zoom: 25%;" />
 
