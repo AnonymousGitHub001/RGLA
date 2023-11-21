@@ -21,7 +21,7 @@ The whole attack process can be composed of three phases:
 
 ```python
 # Model output leakage
-def Model_output_leakage(grad, model, label, batchsize)
+def Model_output_leakage(grad, model, label, batchsize):
     pred_modelPred = torch.randn((batchsize, class_num)).to(device).requires_grad_(True) # torch.randn((batchsize, class_num)).to(device).requires_grad_(True)
     criterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam([pred_modelPred], lr=lr)
