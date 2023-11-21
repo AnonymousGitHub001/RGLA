@@ -1,7 +1,7 @@
 # RGLA: Reverse Gradient Leakage Attack using Inverted Cross-Entropy Loss Function
 ## Abstract
 
-RGLA,a gradient leakage attack (GLA) method, can reconstruct 224 $\times$ 224 pixels private training data of batch size 256 in 30 seconds while considering duplicate labels. GLAD addresses the challenge of high-resolution data and duplicate labels for GLA, thus push the GLA more realistic. Extensive experiments demonstrate the robustness of RGLA to high resolution, duplicate labels, batch size, relatively strict defense methods, and initialization methods for the dummy model output.
+RGLA, a gradient leakage attack (GLA) method, can reconstruct 224 $\times$ 224 pixels private training data of batch size 256 in 30 seconds while considering duplicate labels. GLAD addresses the challenge of high-resolution data and duplicate labels for GLA, thus push the GLA more realistic. Extensive experiments demonstrate the robustness of RGLA to high resolution, duplicate labels, batch size, relatively strict defense methods, and initialization methods for the dummy model output.
 
 
 
