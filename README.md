@@ -77,11 +77,11 @@ also, you can train your generator by running TrainGeneratorGtoImg.py
 
 - Comparison with the state-of-the-art methods
 
-  <img src="./readme_files/compareexample.png" alt="compareexample" style="zoom:25%;" />
+  <img src="./readme_files/compareexample.png" alt="compareexample" style="zoom: 25%;" />
 
 - Reconstruct private training data with batch size of 256.
 
-  <img src="./readme_files/256batchsize.png" alt="256batchsize" style="zoom:25%;" />
+  <img src="./readme_files/256batchsize.png" alt="256batchsize" style="zoom: 25%;" />
 
 - Reconstruct private training data against mainstream defense mechanisms.
 
@@ -93,7 +93,7 @@ also, you can train your generator by running TrainGeneratorGtoImg.py
 
 - Evaluation of the different initialization methods for the dummy model output
 
-  <img src="./readme_files/initial.png" alt="initial" style="zoom:25%;" />
+  <img src="./readme_files/initial.png" alt="initial" style="zoom: 25%;" />
 
 - Reconstruction by inferred label [Ma K, Sun Y, Cui J, et al. Instance-wise Batch Label Restoration via Gradients in Federated Learning[C]//The Eleventh International Conference on Learning Representations. 2022.]
 
