@@ -77,29 +77,29 @@ also, you can train your generator by running TrainGeneratorGtoImg.py
 
 - Comparison with the state-of-the-art methods
 
-  <img src="./readme_files/compareexample.png" alt="compareexample" style="zoom: 25%;" />
+<img src="./readme_files/compareexample.png" alt="compareexample" style="zoom: 25%;" />
 
 - Reconstruct private training data with batch size of 256.
 
-  <img src="./readme_files/256batchsize.png" alt="256batchsize" style="zoom: 25%;" />
+<img src="./readme_files/256batchsize.png" alt="256batchsize" style="zoom: 25%;" />
 
 - Reconstruct private training data against mainstream defense mechanisms.
 
-  <img src="./readme_files/readmeimg2.png" alt="readmeimg2" style="zoom: 25%;" />
+<img src="./readme_files/readmeimg2.png" alt="readmeimg2" style="zoom: 25%;" />
 
 - Ablation Study
 
-  <img src="./readme_files/objective combination.png" alt="objective combination" style="zoom: 25%;" />
+<img src="./readme_files/objective combination.png" alt="objective combination" style="zoom: 25%;" />
 
 - Evaluation of the different initialization methods for the dummy model output
 
-  <img src="./readme_files/initial.png" alt="initial" style="zoom: 25%;" />
+<img src="./readme_files/initial.png" alt="initial" style="zoom: 25%;" />
 
 - Reconstruction by inferred label [Ma K, Sun Y, Cui J, et al. Instance-wise Batch Label Restoration via Gradients in Federated Learning[C]//The Eleventh International Conference on Learning Representations. 2022.]
 
-  <img src="./readme_files/inferredlabels.png" alt="inferredlabels" style="zoom: 25%;" />
+<img src="./readme_files/inferredlabels.png" alt="inferredlabels" style="zoom: 25%;" />
 
 - Reconstruct the data batch of 336$\times$336 pixels
 
-  <img src="./readme_files/pixels336.png" alt="pixels336" style="zoom: 25%;" />
+<img src="./readme_files/pixels336.png" alt="pixels336" style="zoom: 25%;" />
 
