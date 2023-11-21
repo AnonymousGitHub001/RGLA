@@ -97,9 +97,9 @@ also, you can train your generator by running TrainGeneratorGtoImg.py
 
 - Reconstruction by inferred label [Ma K, Sun Y, Cui J, et al. Instance-wise Batch Label Restoration via Gradients in Federated Learning[C]//The Eleventh International Conference on Learning Representations. 2022.]
 
-  <img src=".\readme_files\inferredlabels.png" alt="inferredlabels" style="zoom: 25%;" />
+  <img src="./readme_files/inferredlabels.png" alt="inferredlabels" style="zoom: 25%;" />
 
 - Reconstruct the data batch of 336$\times$336 pixels
 
-  <img src=".\readme_files\pixels336.png" alt="pixels336" style="zoom: 25%;" />
+  <img src="./readme_files/pixels336.png" alt="pixels336" style="zoom: 25%;" />
 
